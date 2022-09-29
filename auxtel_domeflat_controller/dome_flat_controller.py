@@ -3,10 +3,11 @@ import sys
 from labjack import ljm # type: ignore
 import socket
 
+_DEFAULT_ADDRESS = "auxtel-labjack02.cp.lsst.org"
 
 class DomeFlatController:
     _PINNAME = "FIO0"
-    def __init__(self, labjackaddr: str):
+    def __init__(self, labjackaddr: str = _DEFAULT_ADDRESS):
         self._labjackaddr = labjackaddr
         #check if we were passed an IP address
         try:
@@ -33,7 +34,6 @@ class DomeFlatController:
 
 
 def script():
-    ADDRESS = "auxtel-labjack02.cp.lsst.org"
     ap = argparse.ArgumentParser("dome_flat_controller",
                                  description="manually turn on and off the auxtel dome flat")
 
@@ -45,7 +45,7 @@ def script():
         print("ERROR: must supply either --read or a state to set")
         sys.exit(-1)
     elif args.state is None:
-        dfc = DomeFlatController(ADDRESS)
+        dfc = DomeFlatController(_DEFAULT_ADDRESS)
         print(int(dfc.domeFlatState))
     else:
         dfc = DomeFlatController(ADDRESS)
