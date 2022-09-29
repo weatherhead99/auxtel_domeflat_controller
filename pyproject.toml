@@ -8,8 +8,11 @@ name = "auxtel-domeflat-controller"
 version = "0.0.0"
 description = "scripts and class to control the temporary auxtel flat projector"
 authors = ["Dan Weatherill <daniel.weatherill@physics.ox.ac.uk>"]
-
+packages = [{include="auxtel-domeflat-controller"}]
 
 [tool.poetry.dependencies]
 labjack-ljm = "^1.21.0"
 
+
+[tool.poetry.scripts]
+domeflat_control = "auxtel-domeflat-controller.dome_flat_controller:script"
