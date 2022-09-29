@@ -1,0 +1,18 @@
+[[package]]
+name = "labjack-ljm"
+version = "1.21.0"
+description = "LJM library Python wrapper for LabJack T7 and T4."
+category = "main"
+optional = false
+python-versions = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "*"
+content-hash = "b1c58964c8ff24e174b65eb78d302f0a368ff89ffae105f8eb2043ccd4c1b07c"
+
+[metadata.files]
+labjack-ljm = [
+    {file = "labjack-ljm-1.21.0.tar.gz", hash = "sha256:5b168471e21b83d0745d488ebee60ae74d99140ff9e8d02e6a0891590ee5811f"},
+    {file = "labjack_ljm-1.21.0-py2.py3-none-any.whl", hash = "sha256:d595e90705be29bd07789e64a397710e8cd637be584035d28e02fb10c0f32bea"},
+]

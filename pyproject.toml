@@ -1,0 +1,15 @@
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"
+
+[tool.poetry]
+name = "auxtel-domeflat-controller"
+#note version will be picked up from git repo by plugin
+version = "0.0.0"
+description = "scripts and class to control the temporary auxtel flat projector"
+authors = ["Dan Weatherill <daniel.weatherill@physics.ox.ac.uk>"]
+
+
+[tool.poetry.dependencies]
+labjack-ljm = "^1.21.0"
+
