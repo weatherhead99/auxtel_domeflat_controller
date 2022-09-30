@@ -15,3 +15,8 @@ labjack-ljm = "^1.21.0"
 
 [tool.poetry.scripts]
 domeflat_control = "auxtel_domeflat_controller.dome_flat_controller:script"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs="git"
+dirty=true
