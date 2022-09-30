@@ -2,7 +2,9 @@
 
 This is a simple controller for the auxtel dome flat that can be used from
 `jupyter` notebooks, `python` scripts, or with a very simple command line
-utility.
+utility. It should work without much fuss from any computer that can route TCP
+packets to the auxtel labjack (that is, any computer on the summit, or any
+computer connected to the summit VPN network).
 
 ## Installation
 
