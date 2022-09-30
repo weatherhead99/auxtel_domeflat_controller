@@ -6,7 +6,8 @@ import socket
 _DEFAULT_ADDRESS = "auxtel-labjack02.cp.lsst.org"
 
 class DomeFlatController:
-    _PINNAME = "FIO0"
+    _FIO_PIN: int = 0
+
     def __init__(self, labjackaddr: str = _DEFAULT_ADDRESS):
         self._labjackaddr = labjackaddr
         #check if we were passed an IP address
@@ -25,12 +26,16 @@ class DomeFlatController:
 
     @property
     def domeFlatState(self) -> bool:
-        state = ljm.eReadName(self._hdl, self._PINNAME)
-        return bool(int(state))
+        #NOTE: do NOT do eReadName("FIO0")!!! it also configures direction!!
+        fiostate = ljm.eReadName(self._hdl, "FIO_STATE")
+
+        state = bool((1 << self._FIO_PIN) & int(fiostate))
+        return state
 
     @domeFlatState.setter
     def domeFlatState(self, state: bool) -> None:
-        ljm.eWriteName(self._hdl, self._PINNAME, float(int(state)))
+        pinname = "FIO" + str(self._FIO_PIN)
+        ljm.eWriteName(self._hdl, pinname, float(int(state)))
 
 
 def script():
@@ -48,7 +53,7 @@ def script():
         dfc = DomeFlatController(_DEFAULT_ADDRESS)
         print(int(dfc.domeFlatState))
     else:
-        dfc = DomeFlatController(ADDRESS)
+        dfc = DomeFlatController(_DEFAULT_ADDRESS)
         dfc.domeFlatState = bool(args.state)
 
 
