@@ -14,4 +14,4 @@ labjack-ljm = "^1.21.0"
 
 
 [tool.poetry.scripts]
-domeflat_control = "auxtel-domeflat-controller.dome_flat_controller:script"
+domeflat_control = "auxtel_domeflat_controller.dome_flat_controller:script"
